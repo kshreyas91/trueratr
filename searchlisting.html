@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TrueRatr - Misleading Reviews Never Again</title>
@@ -49,11 +50,59 @@
   <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
+       <![endif]-->
+
+<script>
+
+
+function addList() {
+  var ul = document.getElementById("searchList");
+  var li = document.createElement("li");
+  var divEle = document.createElement("div");
+  divEle.innerHTML = "<div class='row'> <div class='col-md-8'> App Name </div> <div class='col-md-4'> Category : Games</div> <div class='col-md-12'> App Description </div> <div class='col-md-6'> Actual Rating</div> <div class='col-md-6'> True Rating</div> </div>";
+  li.appendChild(divEle);
+  li.setAttribute("id", 123); // added line
+  ul.appendChild(li);
+}
+
+
+function getQueryVariable(variable) {
+  var query = window.location.search.substring(1);
+  var vars = query.split("&");
+  for (var i=0;i<vars.length;i++) {
+    var pair = vars[i].split("=");
+    if (pair[0] == variable) {
+      return pair[1];
+    }
+  } 
+  alert('Query Variable ' + variable + ' not found');
+}
+
+renderData = function(jsonResponse){
+  alert(jsonResponse)
+  for(var i=0;i < 10;i++){
+    addList();
+  }
+}
+
+var getData = function() {
+  baseurl = "http://trueratr-backend.heroku.com/search?q="
+  queryString = getQueryVariable("q");
+  url = baseurl+queryString;
+  $.getJSON(url, renderData)
+
+}
+  // render data
+window.getData = getData;
+
+
+
+</script>
+
 
 </head>
 
-<body>
+<body onload="getData();">
   <!-- Nav Menu Section -->
   <div class="logo-menu">
     <nav class="navbar navbar-default">
@@ -73,5 +122,53 @@
     </nav>
   </div>
   <!-- Nav Menu Section End -->
+
+  <!-- Search Bar -->
+  <br>
+ <div class="col-md-12 text-center">
+            <div class="search-wrapper">
+                <input type="text" />
+                <div class="search-button fa fa-search-plus"></div>
+            </div>
+          </div>
+  <br>
+  <br>
+  <span>
+    Search Listings : 
+  </span>
+  <br>
+  <br>
+  <div class="col-md-12" id="searchListingDiv">
+  
+</div>
+  <ul id="searchList" class="list-group">
+  <li class="list-group-item">
+  <div>
+  <div class="row">
+  <div class="col-md-8"> App Name </div> <div class="col-md-4"> Category : Games</div> 
+  <div class="col-md-12"> App Description </div> 
+  <div class="col-md-6"> Actual Rating</div> <div class="col-md-6"> True Rating</div> 
+  </div>
+  </li>
+  <li class="list-group-item">
+  <div>
+  <div class="row">
+  <div class="col-md-8"> App Name </div> <div class="col-md-4"> Category : Games</div> 
+  <div class="col-md-12"> App Description </div> 
+  <div class="col-md-6"> Actual Rating</div> <div class="col-md-6"> True Rating</div> 
+  </div>
+  </li>
+  <li class="list-group-item">
+  <div>
+  <div class="row">
+  <div class="col-md-8"> App Name </div> <div class="col-md-4"> Category : Games</div> 
+  <div class="col-md-12"> App Description </div> 
+  <div class="col-md-6"> Actual Rating</div> <div class="col-md-6"> True Rating</div> 
+  </div>
+  </li>
+</ul>
+
+  </div>
+  <!-- Search Bar Ends -->
 </body>
 </html>

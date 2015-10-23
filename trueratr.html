@@ -50,7 +50,18 @@
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
+<script>
+function redirectToSearchListing(){
+  var queryTerm = document.getElementById('searchBox').value;
+  window.location.href = "searchlisting.html?q="+ queryTerm;
 
+}
+
+function getURL(){
+  var queryTerm = document.getElementById('searchBox').value;
+  return "searchlisting.html?q=" + queryTerm
+}
+</script>
 </head>
 
 <body>
@@ -87,11 +98,11 @@
           <div class="col-md-12 text-center">
             <form role="form" class="sign-up-form">
               <div class="form-group col-md-offset-4 col-md-4 col-md-offset-4 wow fadeInDown">
-                <input type="email" class="form-control" id="searchBox" placeholder="Search for an app as you would on iTunes">
+                <input type="text" class="form-control" id="searchBox" placeholder="Search for an app as you would on iTunes">
               </div>
               <div class="form-group col-md-offset-4 col-md-4 col-md-offset-4 wow fadeInDown" data-wow-delay=".7s">
               
-                <a class="sign-up-button btn btn-border btn-lg col-md-offset-3 col-md-6 col-md-offset-3 wow fadeInUp" data-wow-delay="1s" href="#">Search!</a>
+                <a class="sign-up-button btn btn-border btn-lg col-md-offset-3 col-md-6 col-md-offset-3 wow fadeInUp" data-wow-delay="0.5s" href="javascript:redirectToSearchListing();">Search!</a>
               </div>
             </form>
           </div>
