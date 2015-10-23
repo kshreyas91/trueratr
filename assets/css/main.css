@@ -1,0 +1,340 @@
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+a {
+  color: #e74c3c;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+a:hover {
+  color: #e76c3c;
+}
+.row {
+  padding: 60px 0px;
+}
+.btn {
+  border: none;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+.btn-border {
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+}
+.btn-border:hover {
+  background: #fff;
+  color: #444;
+}
+.btn-default {
+  background: #3498db;
+  color: #fff;
+}
+.btn-default:hover {
+  background: #2980b9;
+  color: #fff;
+}
+.title-big {
+  text-align: center;
+  font-size: 60px;
+}
+.subtitle-big {
+  text-align: center;
+  font-weight: 100;
+  padding-bottom: 30px;
+  position: relative;
+  color: #bdc3c7;
+}
+.title-small {
+  font-size: 45px;
+}
+.subtitle-small {
+  font-weight: 100;
+  padding-bottom: 30px;
+  position: relative;
+  color: #bdc3c7;
+  font-size: 20px;
+}
+.logo-menu .container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.navbar {
+  margin-bottom: 0;
+}
+.navbar li {
+  color: #d1d1d1;
+}
+.navbar-default {
+  border: none;
+  border-radius: 0;
+  background: #3498DB;
+}
+.navbar-default .navbar-nav > li {
+  margin: 0 15px;
+  border-radius: 4px;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #fff;
+  background: none;
+  padding: 8px 15px;
+}
+.navbar-default .navbar-nav li a,
+.navbar-default .navbar-nav li a:hover {
+  color: #fff;
+  padding: 8px 15px;
+}
+.navbar-default .navbar-nav > .active,
+.navbar-default .navbar-nav li:hover {
+  color: #fff;
+  background: rgba(41, 40, 40, 0.42);
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+.navbar-default .navbar-brand {
+  font-size: 25px;
+  color: #fff;
+  font-weight: 100;
+  padding: 8px 15px;
+}
+.navbar-default .navbar-brand:hover {
+  color: #eee;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background: #fff;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background: #333;
+}
+#hero-area {
+  background: url(../img/backgrounds/hero-bg.jpg) fixed;
+  background-size: cover;
+  color: #fff;
+}
+#hero-area .btn {
+  margin-right: 20px;
+}
+#hero-area img {
+  max-width: 100%;
+}
+#hero-area p {
+  padding: 50px 0;
+}
+#hero-area .row {
+  padding: 100px 0;
+}
+.hero-inner {
+  position: relative;
+  color: #fff;
+}
+.hero-inner:before {
+  background-color: rgba(52, 152, 219, 0.5);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  content: "";
+  display: block;
+}
+.sign-up-form input,
+.sign-in-form input,
+.sign-up-form input[type="password"],
+.sign-in-form input[type="password"],
+.sign-up-form input[type="text"],
+.sign-in-form input[type="text"],
+.sign-up-form input,
+.sign-in-form input,
+.sign-up-form input[type="email"],
+.sign-in-form input[type="email"] {
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  height: 45px;
+  margin-bottom: 30px;
+}
+#sign-in-area,
+#sign-up-area {
+background: url(../img/backgrounds/hero-bg.jpg) fixed;
+}
+#sign-in-area .title-big,
+#sign-up-area .title-big {
+  color: #fff;
+}
+#key-features i {
+  color: #333;
+  margin-bottom: 15px;
+}
+#key-features h3 {
+  margin-top: 0;
+  font-size: 28px;
+  color: #3498DB;
+}
+#main-features #feature-list-item-1,
+#main-features #feature-list-item-3 {
+  background: #ecf0f1;
+}
+#main-features .title-small {
+  color: #3498DB;
+}
+#main-features .subtitle-small {
+  line-height: 30px;
+}
+#main-features .btn-default {
+  margin-top: 20px;
+}
+#features {
+  background: url(../img/backgrounds/feature-bg.jpg);
+  background-size: cover;
+  overflow: hidden;
+  position: relative;
+}
+
+#features .title-small {
+  text-align: center;
+  color: #ffffff;
+}
+#features .btn-lg {
+  width: 220px;
+  margin-top: 20px;
+  margin-right: 15px;
+  margin-left: 15px;
+  text-transform: uppercase;
+}
+#features .btn-lg i {
+  padding-right: 5px;
+}
+#features .icon {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  border-radius: 4px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  color: #ffffff;
+}
+#features .content-left,
+#features .content-right {
+  position: relative;
+  top: 60px;
+}
+#features .content-left span {
+  float: right;
+  margin-left: 25px;
+}
+#features .content-right span {
+  float: left;
+  margin-right: 25px;
+}
+#features .box-item {
+  padding-bottom: 40px;
+}
+#features .box-item .icon {
+  background: #3498db;
+  text-align: center;
+  margin-top: 12px;
+  -webkit-transition: background 0.2s, color 0.2s;
+  -moz-transition: background 0.2s, color 0.2s;
+  transition: background 0.2s, color 0.2s;
+}
+#features .box-item .icon i {
+  color: #333333;
+  font-size: 24px;
+  line-height: 60px;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+#features .box-item .text h4 {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  text-transform: uppercase;
+}
+#features .box-item .text p {
+  color: #BABABA;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 18px;
+}
+#features .box-item:hover .icon {
+  background: #2980b9;
+}
+#features .box-item:hover .icon i {
+  color: #ffffff;
+}
+#features .show-box {
+  padding: 22px 64px;
+}
+#bottom {
+  background: #333;
+  color: #fff;
+}
+#bottom a {
+  color: #fff;
+}
+#bottom ul {
+  list-style: none;
+  padding: 0;
+}
+#bottom .social i {
+  border: 2px solid #3498db;
+  background: #3498db;
+  color: #333;
+  padding: 10px;
+  margin-right: 5px;
+  width: 50px;
+  height: 50px;
+  vertical-align: middle;
+  border-radius: 100%;
+}
+#bottom .social i:hover {
+  border: 2px solid transparent;
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+#bottom .social .social-links a:hover {
+  color: #fff;
+}
+#bottom .fa-facebook:before {
+  margin-left: 5px;
+}
+#bottom .social .fa-facebook:hover {
+  background: #3b5998;
+  color: #fff;
+}
+#bottom .social .fa-twitter:hover {
+  background: #00CAFB;
+  color: #fff;
+}
+#bottom .social .fa-google-plus:hover {
+  background: #D23A1D;
+  color: #fff;
+}
+#bottom .social .fa-linkedin:hover {
+  background: #007bb6;
+  color: #fff;
+}
