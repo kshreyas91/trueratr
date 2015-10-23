@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
   <meta charset="utf-8">
@@ -55,15 +54,16 @@
 <script>
 
 
-function addList() {
+function addList(obj) {
   var ul = document.getElementById("searchList");
   var li = document.createElement("li");
   var divEle = document.createElement("div");
-  divEle.innerHTML = "<div class='row'> <div class='col-md-8'> App Name </div> <div class='col-md-4'> Category : Games</div> <div class='col-md-12'> App Description </div> <div class='col-md-6'> Actual Rating</div> <div class='col-md-6'> True Rating</div> </div>";
+  divEle.innerHTML = "<div style='background-color: #3498DB;color: white;height: 60px;line-height: 60px;text-align: center;'> <div class='col-md-12'>"+ obj.trackName +"</div> </div> <div class='row1'> <div class='col-md-12' style='text-align=right'> Publisher :   "+obj.artistName +"</div></div><div class='row1'><div class='col-md-12'> App Description : "+ obj.description+"</div> </div> <div class='row1'><div class='col-md-6' style='text-align:center'> Actual Rating</div> <div style='text-align:center' class='col-md-6'> True Rating </div> </div> <div class='row1'><div style='font-size:350%;text-align:center' class='col-md-6'>"+obj.averageUserRating+"</div> <div style='font-size:350%;text-align:center;' class='col-md-6'>"+obj.trueRating.toFixed(2)+"</div> </div> <div class='row' style='text-align:center'> <a type='button' href='#'> Know More </a> </div>";
   li.appendChild(divEle);
   li.setAttribute("id", 123); // added line
   ul.appendChild(li);
 }
+
 
 
 function getQueryVariable(variable) {
@@ -79,14 +79,19 @@ function getQueryVariable(variable) {
 }
 
 renderData = function(jsonResponse){
-  alert(jsonResponse)
-  for(var i=0;i < 10;i++){
-    addList();
+  if(jsonResponse.resultCount > 0){
+  for(var i=0;i < jsonResponse.resultCount;i++){
+    addList(jsonResponse.results[i]);}
+  }
+else
+  {
+    alert("No Results found for the given search term");
+    window.location.href = "trueratr.html"
   }
 }
 
 var getData = function() {
-  baseurl = "http://trueratr-backend.heroku.com/search?q="
+  baseurl = "https://trueratr-backend.herokuapp.com/search?q="
   queryString = getQueryVariable("q");
   url = baseurl+queryString;
   $.getJSON(url, renderData)
@@ -110,7 +115,7 @@ window.getData = getData;
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header col-md-3">
           
-          <a class="navbar-brand" href="index.html"><i class="fa fa-fa fa-star-half-o"></i> TrueRatr</a>
+          <a class="navbar-brand" href="trueratr.html"> <img src="assets/img/features/Desktop.png" alt=""></a>
         </div>
 
         <div class="collapse navbar-collapse" id="navbar">
@@ -121,52 +126,30 @@ window.getData = getData;
       </div>
     </nav>
   </div>
+
+
+
   <!-- Nav Menu Section End -->
 
   <!-- Search Bar -->
   <br>
- <div class="col-md-12 text-center">
-            <div class="search-wrapper">
-                <input type="text" />
+  <div class="col-md-12 text-center" style="margin-bottom: 60px;margin-left: auto;margin-right: auto;text-align: center;">
+            <div class="search-wrapper" style="width: 820px;margin: auto;">
+                <input type="text" style="width: 800px;">
                 <div class="search-button fa fa-search-plus"></div>
             </div>
-          </div>
+  </div>
+
   <br>
   <br>
-  <span>
-    Search Listings : 
-  </span>
   <br>
   <br>
-  <div class="col-md-12" id="searchListingDiv">
   
-</div>
+  <div class="container" style="align:center"id="searchListingDiv">
   <ul id="searchList" class="list-group">
-  <li class="list-group-item">
-  <div>
-  <div class="row">
-  <div class="col-md-8"> App Name </div> <div class="col-md-4"> Category : Games</div> 
-  <div class="col-md-12"> App Description </div> 
-  <div class="col-md-6"> Actual Rating</div> <div class="col-md-6"> True Rating</div> 
+  </ul> 
   </div>
-  </li>
-  <li class="list-group-item">
-  <div>
-  <div class="row">
-  <div class="col-md-8"> App Name </div> <div class="col-md-4"> Category : Games</div> 
-  <div class="col-md-12"> App Description </div> 
-  <div class="col-md-6"> Actual Rating</div> <div class="col-md-6"> True Rating</div> 
-  </div>
-  </li>
-  <li class="list-group-item">
-  <div>
-  <div class="row">
-  <div class="col-md-8"> App Name </div> <div class="col-md-4"> Category : Games</div> 
-  <div class="col-md-12"> App Description </div> 
-  <div class="col-md-6"> Actual Rating</div> <div class="col-md-6"> True Rating</div> 
-  </div>
-  </li>
-</ul>
+ 
 
   </div>
   <!-- Search Bar Ends -->

@@ -21,6 +21,9 @@ a:hover {
 .row {
   padding: 60px 0px;
 }
+.row1 {
+  padding: 20px 0px;
+}
 .btn {
   border: none;
   -webkit-transition: all 0.2s linear;
