@@ -341,16 +341,37 @@ background: url(../img/backgrounds/hero-bg.jpg) fixed;
   background: #007bb6;
   color: #fff;
 }
-#page-loader {
-  position: absolute;
-  top: 0;
-  bottom: 0%;
-  left: 0;
-  right: 0%;
-  background-color: white;
-  z-index: 99;
-  display: none;
-  text-align: center;
+.load-bar {
+  position: relative;
+  margin-top: 20px;
   width: 100%;
-  padding-top: 25px;
+  height: 6px;
+  background-color: #fdba2c;
+}
+.bar {
+  content: "";
+  display: inline;
+  position: absolute;
+  width: 0;
+  height: 100%;
+  left: 50%;
+  text-align: center;
+}
+.bar:nth-child(1) {
+  background-color: #da4733;
+  animation: loading 3s linear infinite;
+}
+.bar:nth-child(2) {
+  background-color: #3b78e7;
+  animation: loading 3s linear 1s infinite;
+}
+.bar:nth-child(3) {
+  background-color: #fdba2c;
+  animation: loading 3s linear 2s infinite;
+}
+
+@keyframes loading {
+    from {left: 50%; width: 0;z-index:100;}
+    33.3333% {left: 0; width: 100%;z-index: 10;}
+    to {left: 0; width: 100%;}
 }

@@ -79,7 +79,9 @@ function getQueryVariable(variable) {
 }
 
 renderData = function(jsonResponse){
-  document.getElementById("page-loader").style.visibility = "hidden";
+  document.getElementById("load-bar").style.display = "none";
+  document.getElementById("searchList").style.display = "block";
+
   if(jsonResponse.resultCount > 0){
   for(var i=0;i < jsonResponse.resultCount;i++){
     addList(jsonResponse.results[i]);}
@@ -116,7 +118,6 @@ window.getData = getData;
 
 <body onload="getData();">
   <!-- Nav Menu Section -->
-  <div id="page-loader"> </div>
   <div class="logo-menu">
     <nav class="navbar navbar-default">
       <div class="container">
@@ -155,7 +156,12 @@ window.getData = getData;
   <!-- Search Bar Ends -->
   
   <div class="container" style="text-align:center"id="searchListingDiv">
-  <ul id="searchList" class="list-group">
+  <div class="load-bar">
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+  </div>
+  <ul id="searchList" style ="display:none" class="list-group">
   </ul> 
   </div>
  
