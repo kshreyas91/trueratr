@@ -341,3 +341,16 @@ background: url(../img/backgrounds/hero-bg.jpg) fixed;
   background: #007bb6;
   color: #fff;
 }
+#page-loader {
+  position: absolute;
+  top: 0;
+  bottom: 0%;
+  left: 0;
+  right: 0%;
+  background-color: white;
+  z-index: 99;
+  display: none;
+  text-align: center;
+  width: 100%;
+  padding-top: 25px;
+}
