@@ -4,7 +4,9 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>TrueRatr - Misleading Reviews Never Again</title>
+
 <link rel="apple-touch-icon" sizes="57x57" href="favicons/apple-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="favicons/apple-icon-60x60.png">
 <link rel="apple-touch-icon" sizes="72x72" href="favicons/apple-icon-72x72.png">
@@ -19,31 +21,33 @@
 <link rel="icon" type="image/png" sizes="96x96" href="favicons/favicon-96x96.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
 <link rel="manifest" href="favicons/manifest.json">
+
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="favicons/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
 
-
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+<link href="assets/css/mstyle.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
   <!-- Bootstrap -->
   <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
-
   <!-- Main Style -->
   <link rel="stylesheet" type="text/css" href="assets/css/main.css">
-
   <!-- Responsive Style -->
   <link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
-
   <!--Icon Font-->
   <link rel="stylesheet" media="screen" href="assets/fonts/font-awesome/font-awesome.min.css" />
-
-
   <!-- Extras -->
   <link rel="stylesheet" type="text/css" href="assets/extras/animate.css">
-
-
   <!-- jQuery Load -->
   <script src="assets/js/jquery-min.js"></script>
+  <!-- jQuery Load -->
+  
+  <script src="assets/js/wow.js"></script>
+  <!-- All JS plugin Triggers -->
+  <script src="assets/js/main.js"></script>
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 
   <!--[if lt IE 9]>
@@ -54,17 +58,54 @@
 <script>
 
 
+function doPoll(){
+    $.post('ajax/test.html', function(data) {
+        alert(data);  // process results here
+        setTimeout(doPoll,5000);
+    });
+}
+
 function addList(obj) {
   var ul = document.getElementById("searchList");
   var li = document.createElement("li");
-  var divEle = document.createElement("div");
-  divEle.innerHTML = "<div style='background-color: #3498DB;color: white;height: 60px;line-height: 60px;text-align: center;'> <div class='col-md-12'>"+ obj.trackName +"</div> </div> <div class='row1'> <div class='col-md-12' style='text-align=right'> Publisher :   "+obj.artistName +"</div></div><div class='row1'><div class='col-md-12'> App Description : "+ obj.description+"</div> </div> <div class='row1'><div class='col-md-6' style='text-align:center'> Actual Rating</div> <div style='text-align:center' class='col-md-6'> True Rating </div> </div> <div class='row1'><div style='font-size:350%;text-align:center' class='col-md-6'>"+obj.averageUserRating+"</div> <div style='font-size:350%;text-align:center;' class='col-md-6'>"+obj.trueRating.toFixed(2)+"</div> </div> <div class='row' style='text-align:center'> <a type='button' href='#'> Know More </a> </div>";
-  li.appendChild(divEle);
+  var divEleH = document.createElement("div");
+  divEleH.setAttribute("class", "collapsible-header active")
+  divEleH.innerHTML = "<div class='row'><div class='col s12'><div class='col l2 m3 s4'><img width='75' height='75' class='circle responsive-img' align='middle' src='http://a5.mzstatic.com/us/r30/Purple69/v4/8f/46/17/8f46170e-0b0e-0d74-419d-545d3faee3c7/icon175x175.png'></div> <div class='col l10 m9 s12 left-align'><h5 style='font-size:2.0rem;font-weight:100;'> " +  obj.trackName + " </h5><a class='waves-effect blue lighten-1 btn right' style='margin-bottom:10px;margin-top:0px;margin-left:10px;'></i>TrueRating +</a><h4 style='font-size:3.5rem;font-weight:200;'> <i class='fa fa-apple fa-2x'></i>"+ obj.averageUserRating +"/5.0</h4></div></div></div>";
+
+  var divEleB = document.createElement("div");
+  divEleB.setAttribute("class", "collapsible-body")
+  divEleB.innerHTML = "<blockquote><p class='wow fadeInDown animated'style='text-align: justify;text-justify: inter-word;'> " + obj.description.substring(0,300) + "..." + " </p> </blockquote> <div class='row'><div class='center-align'><div class='col s3 card-panel blue darken-3' wow fadeInLeft animated><h4 style='font-size:2.5rem;font-weight:400;'>3.3/5.0</h4><p>TrueRatr<br>Rating</p></div><div class='col s3 card-panel blue accent-1 wow fadeInLeft animated'><h4 style='font-size:2.5rem;font-weight:400;'>132</h4><p>Reviews<br>Analyzed</p></div><div class='col s3 card-panel blue darken-3 wow fadeInRight animated'><h4 style='font-size:2.5rem;font-weight:400;'>34%</h4><p>Positive<br>Reviews</p></div><div class='col s3 card-panel blue accent-1 wow fadeInRight animated'><h4 style='font-size:2.5rem;font-weight:400;'>12</h4><p>Sarcastic<br>Reviews</p></div></div></div>";
+  li.appendChild(divEleH);
+  li.appendChild(divEleB);
   li.setAttribute("id", 123); // added line
   ul.appendChild(li);
 }
 
 
+function redirectToSearchListing(){
+  var queryTerm = document.getElementById('searchBox').value;
+  window.location.href = "searchlisting.html?q="+ queryTerm;
+
+}
+
+function getURL(){
+  var queryTerm = document.getElementById('searchBox').value;
+  return "searchlisting.html?q=" + queryTerm
+}
+
+function searchApp(e) {
+    var event = e || window.event;
+    var charCode = event.which || event.keyCode;
+    if ( charCode == '13' ) {
+      var queryTerm = document.getElementById('searchBox').value;
+      if(queryTerm == ""){
+        alert("No Search Term Entered")
+      }
+      else {
+        redirectToSearchListing()
+      }
+    }
+}
 
 function getQueryVariable(variable) {
   var query = window.location.search.substring(1);
@@ -81,6 +122,8 @@ function getQueryVariable(variable) {
 renderData = function(jsonResponse){
   document.getElementById("lb").style.display = "none";
   document.getElementById("searchList").style.display = "block";
+  document.getElementById("resultsIndicator").style.display = "block";
+  document.getElementById("resultsIndicator").innerHTML = "Showing Results for <span class=blue darken-1>" + decodeURIComponent(getQueryVariable('q')) + " </span>. Total Number of results :" + jsonResponse.resultCount
 
   if(jsonResponse.resultCount > 0){
   for(var i=0;i < jsonResponse.resultCount;i++){
@@ -93,18 +136,13 @@ else
   }
 }
 
-var getStarted = function() {
-
-}
 
 var getData = function() {
   baseurl = "https://trueratr-backend.herokuapp.com/search?q="
   queryString = getQueryVariable("q");
   url = baseurl+queryString;
   $.getJSON(url, renderData)
-
 }
-
 
 // render data
 window.getData = getData;
@@ -117,6 +155,9 @@ window.getData = getData;
 </head>
 
 <body onload="getData();">
+  <script src="assets/js/materialize.js"></script>
+  <script src="assets/js/init.js"></script>
+
   <!-- Nav Menu Section -->
   <div class="logo-menu">
     <nav class="navbar navbar-default">
@@ -124,7 +165,7 @@ window.getData = getData;
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header col-md-3">
           
-          <a class="navbar-brand" href="trueratr.html"> <img src="assets/img/features/Desktop.png" alt=""></a>
+          <a class="navbar-brand" href="trueratr.html" style="height:35px"> <img src="assets/img/features/Desktop.png" alt=""></a>
         </div>
 
         <div class="collapse navbar-collapse" id="navbar">
@@ -135,34 +176,31 @@ window.getData = getData;
       </div>
     </nav>
   </div>
-
-
-
   <!-- Nav Menu Section End -->
 
   <!-- Search Bar -->
-
   <br>
   <div class="col-md-12 text-center" style="margin-bottom: 60px;margin-left: auto;margin-right: auto;text-align: center;">
             <div class="search-wrapper" style="width: 820px;margin: auto;">
-                <input type="text" style="width: 800px;">
-                <div class="search-button fa fa-search-plus"></div>
+                <input onkeyup="searchApp(event)" type="text" id="searchBox" style="width: 800px;">
+                <div class="search-button fa fa-search-plus" onclick="redirectToSearchListing()"></div>
             </div>
   </div>
 
   <br>
-  <br>
-
   <!-- Search Bar Ends -->
   
   <div class="container" style="text-align:center"id="searchListingDiv">
+  <div class="section">
   <div class="load-bar" id="lb">
   <div class="bar"></div>
   <div class="bar"></div>
   <div class="bar"></div>
   </div>
-  <ul id="searchList" style ="display:none" class="list-group">
+  <i><div id="resultsIndicator" class="left-align"style="display:none;font-size:1.5rem;font-weight:400;"> </div> </i>
+  <ul id="searchList" class="collapsible popout no-bullets list-group" data-collapsible="accordion" style ="display:none">
   </ul> 
+</div>
   </div>
  
 
