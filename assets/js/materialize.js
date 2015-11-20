@@ -324,9 +324,51 @@ else {
        Helper Functions
        ****************/
 
+      // Additional Function to renderData 
+
+      function renderAnalysis(data, appID) {
+      console.log(data)
+	  trueRating = appID + "rating"
+	  positiveNum = appID + "posNum"
+	  totalNum = appID + "tot"
+	  sarcasticNum = appID + "sarcNum"
+
+	  trueRatingLoading = appID + "ratingLoad"
+	  positiveNumLoading = appID + "posLoad"
+	  totalNumLoading = appID + "totLoad"
+	  sarcasticNumLoading = appID + "sarcLoad"
+
+	   posReview = appID + "pos"
+	  negReview = appID + "neg"
+	  sarcReview = appID + "sarc"
+	  reviewDiv = appID + "div"
+
+	  document.getElementById(trueRatingLoading).style.display = 'none'
+	  document.getElementById(positiveNumLoading).style.display = 'none'
+	  document.getElementById(totalNumLoading).style.display = 'none'
+	  document.getElementById(sarcasticNumLoading).style.display = 'none' 
+		
+	  document.getElementById(trueRating).style.display = 'block'
+	  document.getElementById(positiveNum).style.display = 'block'
+	  document.getElementById(totalNum).style.display = 'block'
+	  document.getElementById(sarcasticNum).style.display = 'block' 
+
+	  document.getElementById(trueRating).innerHTML = (data.results.trueRating).toFixed(2)
+	  document.getElementById(positiveNum).innerHTML = data.results.positiveReviewsCount
+	  document.getElementById(totalNum).innerHTML = data.results.negativeReviewsCount + data.results.positiveReviewsCount + data.results.sarcasticReviewsCount
+	  document.getElementById(sarcasticNum).innerHTML = data.results.sarcasticReviewsCount
+
+
+	  document.getElementById(reviewDiv).style.display = "block"
+	  document.getElementById(posReview).innerHTML = data.results.topPositiveReview
+	  document.getElementById(negReview).innerHTML = data.results.topNegativeReview
+	  document.getElementById(sarcReview).innerHTML = data.results.topSarcasticReview
+
+      }
+
       // Accordion Open
       function accordionOpen(object) {
-        $panel_headers = $this.find('> li > .collapsible-header');
+      	$panel_headers = $this.find('> li > .collapsible-header');
         if (object.hasClass('active')) {
             object.parent().addClass('active');
         }
@@ -334,6 +376,25 @@ else {
             object.parent().removeClass('active');
         }
         if (object.parent().hasClass('active')){
+
+       	url = "http://trueratr-backend2.herokuapp.com/analysis?id=" + object.attr('id')
+
+       	analysis = null;
+
+	    (function poll(){
+	       	if(analysis && analysis.status == "OK"){
+	       		renderAnalysis(analysis, object.attr('id'))
+	       	} 
+	       	else
+	       	{
+	   setTimeout(function(){
+	      $.ajax({ url: url, success: function(data){
+	        analysis = data
+	        //Setup the next poll recursively
+	        poll();
+	      }, dataType: "json"});
+	  	}, 3000);
+		}})();  
           object.siblings('.collapsible-body').stop(true,false).slideDown({ duration: 350, easing: "easeOutQuart", queue: false, complete: function() {$(this).css('height', '');}});
         }
         else{

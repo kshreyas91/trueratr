@@ -66,15 +66,40 @@ function doPoll(){
 }
 
 function addList(obj) {
+  console.log(obj)
   var ul = document.getElementById("searchList");
   var li = document.createElement("li");
   var divEleH = document.createElement("div");
   divEleH.setAttribute("class", "collapsible-header active")
-  divEleH.innerHTML = "<div class='row'><div class='col s12'><div class='col l2 m3 s4'><img width='75' height='75' class='circle responsive-img' align='middle' src='http://a5.mzstatic.com/us/r30/Purple69/v4/8f/46/17/8f46170e-0b0e-0d74-419d-545d3faee3c7/icon175x175.png'></div> <div class='col l10 m9 s12 left-align'><h5 style='font-size:2.0rem;font-weight:100;'> " +  obj.trackName + " </h5><a class='waves-effect blue lighten-1 btn right' style='margin-bottom:10px;margin-top:0px;margin-left:10px;'></i>TrueRating +</a><h4 style='font-size:3.5rem;font-weight:200;'> <i class='fa fa-apple fa-2x'></i>"+ obj.averageUserRating +"/5.0</h4></div></div></div>";
+  appID = obj.trackId
+  divEleH.setAttribute("id", obj.trackId)
+
+  trueRating = appID + "rating"
+  positiveNum = appID + "posNum"
+  totalNum = appID + "tot"
+  sarcasticNum = appID + "sarcNum"
+
+  trueRatingVal = appID + "ratingVal"
+  positiveNumVal = appID + "posVal"
+  totalNumVal = appID + "totVal"
+  sarcasticNumVal = appID + "sarcVal"
+
+  trueRatingLoading = appID + "ratingLoad"
+  positiveNumLoading = appID + "posLoad"
+  totalNumLoading = appID + "totLoad"
+  sarcasticNumLoading = appID + "sarcLoad"
+
+  posReview = appID + "pos"
+  negReview = appID + "neg"
+  sarcReview = appID + "sarc"
+  reviewDiv = appID + "div"
+
+
+  divEleH.innerHTML = "<div class='row'><div class='col s12'><div class='col l2 m3 s4'><img width='75' height='75' class='circle responsive-img' align='middle' src='"+ obj.artworkUrl+"'></div> <div class='col l10 m9 s12 left-align'><h5 style='font-size:2.0rem;font-weight:100;'> " +  obj.trackName + " </h5><a class='waves-effect blue lighten-1 btn right' style='margin-bottom:10px;margin-top:0px;margin-left:10px;'></i>TrueRating +</a><h5 style='font-size:1.2rem;font-weight:100;'> "+ obj.artistName +" </h5> <h4 style='font-size:3.5rem;font-weight:200;'> <i class='fa fa-apple fa-2x'></i>"+ obj.averageUserRating +"/5.0</h4></div></div></div>";
 
   var divEleB = document.createElement("div");
-  divEleB.setAttribute("class", "collapsible-body")
-  divEleB.innerHTML = "<blockquote><p class='wow fadeInDown animated'style='text-align: justify;text-justify: inter-word;'> " + obj.description.substring(0,300) + "..." + " </p> </blockquote> <div class='row'><div class='center-align'><div class='col s3 card-panel blue darken-3' wow fadeInLeft animated><h4 style='font-size:2.5rem;font-weight:400;'>3.3/5.0</h4><p>TrueRatr<br>Rating</p></div><div class='col s3 card-panel blue accent-1 wow fadeInLeft animated'><h4 style='font-size:2.5rem;font-weight:400;'>132</h4><p>Reviews<br>Analyzed</p></div><div class='col s3 card-panel blue darken-3 wow fadeInRight animated'><h4 style='font-size:2.5rem;font-weight:400;'>34%</h4><p>Positive<br>Reviews</p></div><div class='col s3 card-panel blue accent-1 wow fadeInRight animated'><h4 style='font-size:2.5rem;font-weight:400;'>12</h4><p>Sarcastic<br>Reviews</p></div></div></div>";
+  divEleB.setAttribute("class", "collapsible-body");
+  divEleB.innerHTML = "<blockquote>    <p class='wow fadeInDown animated'style='text-align: justify;text-justify: inter-word;'> " +obj.description.substring(0,300) + " ......" + " </p> </blockquote>  <div class='row2'> <div class='wow fadeInDown animated' id='"+reviewDiv +"' style='display:none'> <h3 class='left-align' style='color:blue;font-size:1.5rem;font-weight:100;'> Reviews that Matter</h5>  <div class='reviewrow green darken-1 left-align' id='"+posReview +"'> </div> <div class='reviewrow orange darken-4 left-align' id='"+negReview +"'> </div> <div class='reviewrow blue-grey lighten-3 left-align' id='"+sarcReview +"'> </div> </div> </div>  <div class='row'>    <div class='center-align'>       <div class='col s3 card-panel blue darken-3' wow fadeInLeft animated>          <div>             <h1 id= '"+ trueRating +"' style='display:none' style='color:white;font-size:2.5rem;font-weight:400;'>3.3/5.0</h4>             <div class='preloader-wrapper big active' id='"+trueRatingLoading +"'>                <div class='spinner-layer spinner-white-only'>                   <div class='circle-clipper left'>                      <div class='circle'></div>                   </div>                   <div class='gap-patch'>                      <div class='circle'></div>                   </div>                   <div class='circle-clipper right'>                      <div class='circle'></div>                   </div>                </div>             </div>             <p>TrueRatr<br>Rating</p>          </div>       </div>       <div class='col s3 card-panel blue accent-1 wow fadeInLeft animated'>          <div>             <h1 id= '"+ totalNum +"' style='display:none' style='color:#ffffff;font-size:2.5rem;font-weight:400;'>132</h4>             <div class='preloader-wrapper big active' id='"+totalNumLoading +"'>                <div class='spinner-layer spinner-white-only'>                   <div class='circle-clipper left'>                      <div class='circle'></div>                   </div>                   <div class='gap-patch'>                      <div class='circle'></div>                   </div>                   <div class='circle-clipper right'>                      <div class='circle'></div>                   </div>                </div>             </div>             <p>Reviews<br>Analyzed</p>          </div>       </div>       <div class='col s3 card-panel blue darken-3 wow fadeInRight animated'>          <div>             <h1  id= '"+ positiveNum +"' style='display:none' style='color:#ffffff;font-size:2.5rem;font-weight:400;'>34%</h4>             <div class='preloader-wrapper big active' id='"+positiveNumLoading +"'>                <div class='spinner-layer spinner-white-only'>                   <div class='circle-clipper left'>                      <div class='circle'></div>                   </div>                   <div class='gap-patch'>                      <div class='circle'></div>                   </div>                   <div class='circle-clipper right'>                      <div class='circle'></div>                   </div>                </div>             </div>             <p>Positive<br>Reviews</p>          </div>       </div>       <div class='col s3 card-panel blue accent-1 wow fadeInRight animated'>          <div>             <h1 id= '"+ sarcasticNum +"' style='display:none' style='color:#ffffff;font-size:2.5rem;font-weight:400;'>12</h4>             <div class='preloader-wrapper big active' id='"+sarcasticNumLoading +"'>                <div class='spinner-layer spinner-white-only'>                   <div class='circle-clipper left'>                      <div class='circle'></div>                   </div>                   <div class='gap-patch'>                      <div class='circle'></div>                   </div>                   <div class='circle-clipper right'>                      <div class='circle'></div>                   </div>                </div>             </div>             <p>Sarcastic<br>Reviews</p>          </div>       </div>    </div> </div>";
   li.appendChild(divEleH);
   li.appendChild(divEleB);
   li.setAttribute("id", 123); // added line
@@ -182,7 +207,7 @@ window.getData = getData;
   <br>
   <div class="col-md-12 text-center" style="margin-bottom: 60px;margin-left: auto;margin-right: auto;text-align: center;">
             <div class="search-wrapper" style="width: 820px;margin: auto;">
-                <input onkeyup="searchApp(event)" type="text" id="searchBox" style="width: 800px;">
+                <input onkeyup="searchApp(event)" type="text" placeholder="Search an app" id="searchBox" style="width: 800px;">
                 <div class="search-button fa fa-search-plus" onclick="redirectToSearchListing()"></div>
             </div>
   </div>
