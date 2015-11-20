@@ -79,7 +79,7 @@ function getQueryVariable(variable) {
 }
 
 renderData = function(jsonResponse){
-  document.getElementById("load-bar").style.display = "none";
+  document.getElementById("lb").style.display = "none";
   document.getElementById("searchList").style.display = "block";
 
   if(jsonResponse.resultCount > 0){
@@ -156,7 +156,7 @@ window.getData = getData;
   <!-- Search Bar Ends -->
   
   <div class="container" style="text-align:center"id="searchListingDiv">
-  <div class="load-bar">
+  <div class="load-bar" id="lb">
   <div class="bar"></div>
   <div class="bar"></div>
   <div class="bar"></div>
