@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TrueRatr - Misleading Reviews Never Again</title>
-<link rel="apple-touch-icon" sizes="57x57" href="favicons/apple-icon-57x57.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TrueRatr - Misleading Reviews Never Again</title>
+  <link rel="apple-touch-icon" sizes="57x57" href="favicons/apple-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="favicons/apple-icon-60x60.png">
 <link rel="apple-touch-icon" sizes="72x72" href="favicons/apple-icon-72x72.png">
 <link rel="apple-touch-icon" sizes="76x76" href="favicons/apple-icon-76x76.png">
@@ -90,20 +90,14 @@ else
   }
 }
 
-var getStarted = function() {
-
-}
-
 var getData = function() {
   baseurl = "https://trueratr-backend.herokuapp.com/search?q="
   queryString = getQueryVariable("q");
   url = baseurl+queryString;
   $.getJSON(url, renderData)
-  document.getElementById("page-loader").style.visible = 'block'
+
 }
-
-
-// render data
+  // render data
 window.getData = getData;
 
 
@@ -115,7 +109,6 @@ window.getData = getData;
 
 <body onload="getData();">
   <!-- Nav Menu Section -->
-  <div id="page-loader" style="visible:none" />
   <div class="logo-menu">
     <nav class="navbar navbar-default">
       <div class="container">
