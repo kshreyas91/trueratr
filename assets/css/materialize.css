@@ -532,6 +532,8 @@
   color: #1976D2 !important; }
 
 .blue.darken-3 {
+  color:white;
+  font-size:20pt;
   background-color: #1565C0 !important; }
 
 .blue-text.text-darken-3 {
@@ -544,6 +546,7 @@
   color: #0D47A1 !important; }
 
 .blue.accent-1 {
+  font-size:20pt;
   background-color: #82B1FF !important; }
 
 .blue-text.text-accent-1 {
@@ -2036,7 +2039,8 @@ ul {
 blockquote {
   margin: 20px 0;
   padding-left: 1.5rem;
-  border-left: 5px solid #ee6e73; }
+  /*border-left: 5px solid #ee6e73; }*/
+}
 
 i {
   line-height: inherit; }
