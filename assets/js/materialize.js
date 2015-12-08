@@ -360,9 +360,9 @@ else {
 
 
 	  document.getElementById(reviewDiv).style.display = "block"
-	  document.getElementById(posReview).innerHTML = data.results.topPositiveReview
-	  document.getElementById(negReview).innerHTML = data.results.topNegativeReview
-	  document.getElementById(sarcReview).innerHTML = data.results.topSarcasticReview
+	  document.getElementById(posReview).innerHTML = "<b>Most Positive Review:</b> "+data.results.topPositiveReview
+	  document.getElementById(negReview).innerHTML = "<b>Most Negative Review:</b> "+data.results.topNegativeReview
+	  document.getElementById(sarcReview).innerHTML = "<b>Most Sarcastic Review:</b> "+data.results.topSarcasticReview
 
       }
 
